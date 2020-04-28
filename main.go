@@ -12,22 +12,22 @@ import (
 func main() {
 	fmt.Println("Inicia proceso")
 
-	conftp, err := ftp.Dial("172.16.100.40:21")
+	conftp, err := ftp.Dial("0.0.0.0:21")
 	if err != nil {
 		log.Fatalf("Error ftp.Dial: %v", err)
 	}
-	err = conftp.Login("DSOHM", "SISAMEX.10")
+	err = conftp.Login("TEST", "*****")
 	if err != nil {
 		log.Fatalf("Error Login: %v", err)
 	}
 
-	err = conftp.ChangeDir("/prod/gxs/Inbound")
+	err = conftp.ChangeDir("/test")
 	if err != nil {
 		msg := fmt.Sprintf("Error al cambiar el directorio: %s", err)
 		fmt.Printf(msg)
 	}
 
-	File, err := ioutil.ReadFile("866_1588060837-31285_4.EDI")
+	File, err := ioutil.ReadFile("test.hk")
 	if err != nil {
 		fmt.Printf("Error al abrir archivo: %s\n", err)
 	}
